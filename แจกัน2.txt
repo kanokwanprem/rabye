@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flower Arranging Game</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: url('party.png') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .header h1 {
+      font-size: 24px;
+      color: #fff;
+      background: #f9a1b0;
+      padding: 10px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 1000px;
+      gap: 20px;
+    }
+    .vase-area {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      background: url('bg_vase.png') no-repeat center center;
+      background-size: contain;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      padding: 10px;
+      width: 350px;
+      height: 400px;
+    }
+    .vase {
+      width: 100px;
+      height: 200px;
+      background: url('vase.png') no-repeat center center;
+      background-size: contain;
+      position: relative;
+      overflow: hidden;
+    }
+    .flower-container {
+      position: absolute;
+      top: 50px; /* ปรับตำแหน่งให้ครอบคลุมแจกัน */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px; /* ขนาดพื้นที่สำหรับวางดอกไม้ */
+      height: 200px;
+      pointer-events: auto; /* เปลี่ยนจาก none เป็น auto */
+    }
+
+    .flower-selection {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.8);
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      padding: 10px;
+      width: 350px;
+    }
+    .flower-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .flower {
+      width: 80px;
+      cursor: grab;
+    }
+    .flower-name {
+      margin-top: 5px;
+      font-size: 14px;
+      color: #333;
+    }
+    .buttons {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .buttons button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 0 10px;
+      border: none;
+      background: #f9a1b0;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .buttons button:hover {
+      background: #f58593;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>งานรื่นเริง</h1>
+  </div>
+  <div class="container">
+    <!-- พื้นที่แจกัน -->
+    <div class="vase-area">
+      <div class="vase"></div>
+      <div class="flower-container" id="flower-container"></div>
+    </div>
+    <!-- พื้นที่แสดงดอกไม้ -->
+    <div class="flower-selection">
+      <div class="flower-item">
+        <img src="rose.png" alt="กุหลาบ" class="flower" draggable="true" id="flower1">
+        <div class="flower-name">กุหลาบ</div>
+      </div>
+      <div class="flower-item">
+        <img src="sunflower.png" alt="ทานตะวัน" class="flower" draggable="true" id="flower2">
+        <div class="flower-name">ทานตะวัน</div>
+      </div>
+      <div class="flower-item">
+        <img src="tulip.png" alt="ทิวลิป" class="flower" draggable="true" id="flower3">
+        <div class="flower-name">ทิวลิป</div>
+      </div>
+      <div class="flower-item">
+        <img src="daffodil.png" alt="ดารารัตน์" class="flower" draggable="true" id="flower4">
+        <div class="flower-name">ดารารัตน์</div>
+      </div>
+      <div class="flower-item">
+        <img src="lilac.png" alt="ไลแลค" class="flower" draggable="true" id="flower5">
+        <div class="flower-name">ไลแลค</div>
+      </div>
+      <div class="flower-item">
+        <img src="lily.png" alt="ลิลลี่" class="flower" draggable="true" id="flower6">
+        <div class="flower-name">ลิลลี่</div>
+      </div>
+      <div class="flower-item">
+        <img src="orchid.png" alt="กล้วยไม้" class="flower" draggable="true" id="flower7">
+        <div class="flower-name">กล้วยไม้</div>
+      </div>
+      <div class="flower-item">
+        <img src="carnation.png" alt="คาร์เนชั่น" class="flower" draggable="true" id="flower8">
+        <div class="flower-name">คาร์เนชั่น</div>
+      </div>
+      <div class="flower-item">
+        <img src="hydrangea.png" alt="ไฮเดรนเยีย" class="flower" draggable="true" id="flower9">
+        <div class="flower-name">ไฮเดรนเยีย</div>
+      </div>
+    </div>
+  </div>
+  <div class="buttons">
+    <button onclick="saveImage()">บันทึก</button>
+    <button onclick="nextStage()">ต่อไป</button>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script>
+    const flowerContainer = document.getElementById('flower-container');
+
+    document.querySelectorAll('.flower').forEach(flower => {
+      flower.addEventListener('dragstart', event => {
+        event.dataTransfer.setData('text', event.target.id);
+      });
+    });
+
+    flowerContainer.addEventListener('dragover', event => {
+      event.preventDefault();
+    });
+
+    flowerContainer.addEventListener('drop', event => {
+      event.preventDefault();
+      const flowerId = event.dataTransfer.getData('text');
+      const flower = document.getElementById(flowerId);
+      const clone = flower.cloneNode(true);
+      clone.style.position = 'absolute';
+      clone.style.zIndex = 10;
+      const rect = flowerContainer.getBoundingClientRect();
+      clone.style.left = `${event.clientX - rect.left - 40}px`;
+      clone.style.top = `${event.clientY - rect.top - 40}px`;
+      clone.setAttribute('draggable', false);
+      flowerContainer.appendChild(clone);
+    });
+
+    function saveImage() {
+      html2canvas(flowerContainer).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'flower-arrangement.png';
+        link.href = canvas.toDataURL();
+        link.click();
+      });
+    }
+
+    function nextStage() {
+      alert('ยังไม่มีด่านถัดไป');
+    }
+  </script>
+</body>
+</html>

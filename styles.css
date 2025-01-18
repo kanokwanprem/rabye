@@ -1,0 +1,277 @@
+@font-face {
+    font-family: 'TorsilpChillChill';
+    src: url('fonts/TorsilpChillChill.ttf') format('truetype');
+}
+/* Tablet (Medium Screens) */
+@media (max-width: 1024px) and (min-width: 768px) {
+    .logo {
+        width: 25%;
+        top: 50px;
+        left: 50%;
+    }
+
+    .flower1, .flower2, .flower3 {
+        width: 70%;
+    }
+
+    .house {
+        width: 50%;
+        left: 50%;
+    }
+
+    .doorclose {
+        width: 15%;
+    }
+
+    .door-text {
+        font-size: 16px;
+    }
+}
+
+/* Mobile (Small Screens) */
+@media (max-width: 768px) {
+    .logo {
+        width: 35%;
+    }
+
+    .flower1, .flower2, .flower3 {
+        width: 80%;
+    }
+
+    .house {
+        width: 60%;
+    }
+
+    .doorclose {
+        width: 20%;
+    }
+
+    .door-text {
+        font-size: 14px;
+    }
+    .subtitle {
+        font-size: 18px;
+        padding: 8px 18px;
+        bottom: 8%;
+    }
+}
+
+/* Small Mobile (Extra Small Screens) */
+@media (max-width: 480px) {
+    .logo {
+        width: 25%;
+        top: 50px;
+        left: 50%;
+    }
+
+    .flower1, .flower2, .flower3 {
+        width: 90%;
+    }
+
+    .house {
+        width: 70%;
+    }
+
+    .doorclose {
+        width: 25%;
+    }
+
+    .door-text {
+        font-size: 12px;
+    }
+    .subtitle {
+        font-size: 16px;
+        padding: 6px 15px;
+        bottom: 10%;
+    }
+}
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    height: 250vh;
+}
+body::after {
+    content: '';
+    display: block;
+    height: 1000px; /* เพิ่มพื้นที่ว่างเพื่อให้เลื่อนได้ไกลขึ้น */
+}
+
+
+.background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: url('bg.png');
+    background-size: cover;
+    background-attachment: fixed;
+    z-index: -6;
+}
+
+.clouds {
+    position: fixed;
+    top: 0%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('clouds.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -5;
+    transform: translateX(0);
+    transition: transform 0.2s ease-out;
+}
+
+.flower1 {
+    position: fixed;
+    bottom: 0%;
+    width: 100%;
+    height: 100%;
+    background-image: url('flower1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -2;
+    transform: translateY(0);
+}
+
+.flower2 {
+    position: fixed;
+    top: -16%;
+    width: 100%;
+    height: 100%;
+    background-image: url('flower2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -3;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: transform 1s ease-out, opacity 1s ease-out;
+}
+
+.flower3 {
+    position: fixed;
+    top: -8%;
+    width: 100%;
+    height: 100%;
+    background-image: url('flower3.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -5;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: transform 1s ease-out, opacity 1s ease-out;
+}
+
+.logo {
+    position: absolute;
+    top: 50px;
+    left: 55%;
+    transform: translateX(-45%);
+    width: 100%;
+    height: 100%;
+    background-image: url('logo.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 1;
+    opacity: 1;
+    transition: opacity 1s ease-out;
+}
+
+.house {
+    position: fixed;
+    bottom: -50%;
+    left: 60%;
+    transform: translateX(-50%) scale(1);
+    width: 100%;
+    height: 100%;
+    background-image: url('house.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: -4;
+    transition: bottom 1s ease-in-out, opacity 1s ease-in-out, transform 1s ease-in-out;
+    opacity: 0;
+}
+
+.doorclose {
+    position: fixed;
+    bottom: -50%;
+    left: 60%;
+    transform: translateX(-50%) scale(1);
+    width: 100%;
+    height: 100%;
+    background-image: url('door close.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 10;
+    transition: bottom 1s ease-in-out, opacity 1s ease-in-out, transform 1s ease-in-out;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.door-text {
+    position: fixed;
+    bottom: 30%;
+    left: 64.5%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    font-family: TorsilpChillChill;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    border-radius: 10px;
+    z-index: 20;
+    opacity: 0;
+    transition: bottom 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.light-overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 0%;
+    height: 0%;
+    background-color: white;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    opacity: 0;
+    transition: all 0.5s ease-in-out; /* เพิ่มระยะเวลาการเปลี่ยนแปลง */
+}
+
+
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 30;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.subtitle {
+    position: fixed;
+    bottom: 2%;
+    left: 52%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    font-family: 'TorsilpChillChill', sans-serif;
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 5px 20px;
+    border-radius: 1px;
+    z-index: 50;
+    text-align: center;
+    white-space: nowrap;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0; /* ซ่อนข้อความเริ่มต้น */
+    transition: opacity 0.5s ease; /* เพิ่มเอฟเฟกต์การแสดง */
+}
