@@ -2,89 +2,8 @@
     font-family: 'TorsilpChillChill';
     src: url('fonts/TorsilpChillChill.ttf') format('truetype');
 }
-/* Tablet (Medium Screens) */
-@media (max-width: 1024px) and (min-width: 768px) {
-    .logo {
-        width: 25%;
-        top: 50px;
-        left: 50%;
-    }
 
-    .flower1, .flower2, .flower3 {
-        width: 70%;
-    }
 
-    .house {
-        width: 50%;
-        left: 50%;
-    }
-
-    .doorclose {
-        width: 15%;
-    }
-
-    .door-text {
-        font-size: 16px;
-    }
-}
-
-/* Mobile (Small Screens) */
-@media (max-width: 768px) {
-    .logo {
-        width: 35%;
-    }
-
-    .flower1, .flower2, .flower3 {
-        width: 80%;
-    }
-
-    .house {
-        width: 60%;
-    }
-
-    .doorclose {
-        width: 20%;
-    }
-
-    .door-text {
-        font-size: 14px;
-    }
-    .subtitle {
-        font-size: 18px;
-        padding: 8px 18px;
-        bottom: 8%;
-    }
-}
-
-/* Small Mobile (Extra Small Screens) */
-@media (max-width: 480px) {
-    .logo {
-        width: 25%;
-        top: 50px;
-        left: 50%;
-    }
-
-    .flower1, .flower2, .flower3 {
-        width: 90%;
-    }
-
-    .house {
-        width: 70%;
-    }
-
-    .doorclose {
-        width: 25%;
-    }
-
-    .door-text {
-        font-size: 12px;
-    }
-    .subtitle {
-        font-size: 16px;
-        padding: 6px 15px;
-        bottom: 10%;
-    }
-}
 body, html {
     margin: 0;
     padding: 0;
@@ -112,8 +31,8 @@ body::after {
     position: fixed;
     top: 0%;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 50vw;
     background-image: url('clouds.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -125,8 +44,8 @@ body::after {
 .flower1 {
     position: fixed;
     bottom: 0%;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 50vw;
     background-image: url('flower1.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -136,9 +55,9 @@ body::after {
 
 .flower2 {
     position: fixed;
-    top: -16%;
-    width: 100%;
-    height: 100%;
+    top: -5vw;
+    width: 100vw;
+    height: 50vw;
     background-image: url('flower2.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -150,9 +69,9 @@ body::after {
 
 .flower3 {
     position: fixed;
-    top: -8%;
-    width: 100%;
-    height: 100%;
+    top: -18%;
+    width: 100vw;
+    height: 60vw;
     background-image: url('flower3.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -168,7 +87,7 @@ body::after {
     left: 55%;
     transform: translateX(-45%);
     width: 100%;
-    height: 100%;
+    height: 50vw;
     background-image: url('logo.png');
     background-repeat: no-repeat;
     background-size: contain;
@@ -183,7 +102,7 @@ body::after {
     left: 60%;
     transform: translateX(-50%) scale(1);
     width: 100%;
-    height: 100%;
+    height: 50vw;
     background-image: url('house.png');
     background-size: contain;
     background-repeat: no-repeat;
@@ -198,7 +117,7 @@ body::after {
     left: 60%;
     transform: translateX(-50%) scale(1);
     width: 100%;
-    height: 100%;
+    height: 50vw;
     background-image: url('door close.png');
     background-size: contain;
     background-repeat: no-repeat;
@@ -210,10 +129,10 @@ body::after {
 
 .door-text {
     position: fixed;
-    bottom: 30%;
+    bottom: 50vw;
     left: 64.5%;
     transform: translateX(-50%);
-    font-size: 20px;
+    font-size: 1.2rem;
     font-family: TorsilpChillChill;
     color: rgb(0, 0, 0);
     padding: 10px 20px;
@@ -262,7 +181,7 @@ body::after {
     bottom: 2%;
     left: 52%;
     transform: translateX(-50%);
-    font-size: 24px;
+    font-size: 1.5rem;
     font-family: 'TorsilpChillChill', sans-serif;
     color: #000;
     background-color: rgba(255, 255, 255, 0.4);
@@ -274,4 +193,143 @@ body::after {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     opacity: 0; /* ซ่อนข้อความเริ่มต้น */
     transition: opacity 0.5s ease; /* เพิ่มเอฟเฟกต์การแสดง */
+}
+
+@media (max-width: 1024px) {
+    .clouds{
+        height: 60vh; /* ปรับขนาดภาพ */
+    }
+
+    .flower1{
+        height: 50vw; /* ปรับขนาดภาพ */
+    }
+
+    .flower2{     
+        position: fixed;
+        top: -15vw;
+        width: 100vw;
+        height: 50vw;
+        background-image: url(flower2.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: -3;
+        transform: translateY(100px);
+        opacity: 0;
+        transition: transform 1s ease-out, opacity 1s ease-out;
+    }
+
+    .flower3 {
+        position: fixed;
+        top: -10vw;
+        width: 100vw;
+        height: 60vw;
+        background-image: url(flower3.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: -5;
+        transform: translateY(100px);
+        opacity: 0;
+        transition: transform 1s ease-out, opacity 1s ease-out;
+    }
+
+    .logo {
+        width: 80vw;
+        left: 50vw;
+        top: 4vw;
+    }
+
+    .house, .doorclose {
+        width: 100vw;
+    }
+
+    .door-text {
+        font-size: 1.2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .clouds{
+        height: 60vh; /* ปรับขนาดภาพ */
+    }
+
+    .flower1{
+        height: 50vw; /* ปรับขนาดภาพ */
+    }
+
+    .flower2{
+        height: 50vw;
+        top: -9vw;
+    }
+
+    .flower3 {
+        height: 60vw;
+        top: -9vw;
+    }
+
+
+    .logo {
+        width: 80vw;
+        left: 50vw;
+        top: 4vw;
+    }
+
+    .house, .doorclose {
+        width: 100vw;
+    }
+
+    .door-text {
+        font-size: 0.8rem;
+    }
+
+    .subtitle {
+        font-size: 0.rem;
+    }
+}
+@media (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
+    .clouds {
+        height: 50vh; /* ปรับขนาดให้สมดุล */
+    }
+
+    .flower1 {
+        height: 80vh; /* ปรับขนาดให้สมดุล */
+    }
+
+    .flower2 {
+        top: 4vw;
+        height: 50vw;    }
+
+    .flower3 {
+        top: 8vw;
+        height: 60vw;
+    }
+
+    .logo {
+        top: 10vw; /* ลดระยะขอบ */
+    }
+
+    .house, .doorclose {
+        width: 100vw;
+        bottom: -30vw;
+        height: 60vw;
+        left: 55vw;
+    }
+
+    .door-text {
+        font-size: 1rem; /* ข้อความเล็กลง */
+        left: 70%;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+        padding: 5px 10px;
+    }
+
+    .video-container video {
+        object-fit: cover; /* ปรับขนาดวิดีโอให้พอดี */
+    }
 }
